@@ -1,7 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { CreditCard, HeartHandshake, LogOut, ShieldAlert } from "lucide-react";
+import { CreditCard, HeartHandshake, LogOut } from "lucide-react";
+import { SupportNote } from "@/components/SupportNote";
 import { AppShell } from "@/components/AppShell";
 import { MoodIcon } from "@/components/Art";
 import { moods } from "@/lib/exercises";
