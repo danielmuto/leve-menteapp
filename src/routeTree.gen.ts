@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssinaturaRouteImport } from './routes/assinatura'
+import { Route as ComecarRouteImport } from './routes/comecar'
 import { Route as DiarioRouteImport } from './routes/diario'
 import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as HumorRouteImport } from './routes/humor'
@@ -27,6 +28,11 @@ const IndexRoute = IndexRouteImport.update({
 const AssinaturaRoute = AssinaturaRouteImport.update({
   id: '/assinatura',
   path: '/assinatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComecarRoute = ComecarRouteImport.update({
+  id: '/comecar',
+  path: '/comecar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiarioRoute = DiarioRouteImport.update({
@@ -68,6 +74,7 @@ const ExercicioSlugRoute = ExercicioSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assinatura': typeof AssinaturaRoute
+  '/comecar': typeof ComecarRoute
   '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assinatura': typeof AssinaturaRoute
+  '/comecar': typeof ComecarRoute
   '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assinatura': typeof AssinaturaRoute
+  '/comecar': typeof ComecarRoute
   '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/assinatura'
+    | '/comecar'
     | '/diario'
     | '/entrar'
     | '/humor'
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/assinatura'
+    | '/comecar'
     | '/diario'
     | '/entrar'
     | '/humor'
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/assinatura'
+    | '/comecar'
     | '/diario'
     | '/entrar'
     | '/humor'
@@ -138,6 +150,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssinaturaRoute: typeof AssinaturaRoute
+  ComecarRoute: typeof ComecarRoute
   DiarioRoute: typeof DiarioRoute
   EntrarRoute: typeof EntrarRoute
   HumorRoute: typeof HumorRoute
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/assinatura'
       fullPath: '/assinatura'
       preLoaderRoute: typeof AssinaturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comecar': {
+      id: '/comecar'
+      path: '/comecar'
+      fullPath: '/comecar'
+      preLoaderRoute: typeof ComecarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/diario': {
@@ -218,6 +238,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssinaturaRoute: AssinaturaRoute,
+  ComecarRoute: ComecarRoute,
   DiarioRoute: DiarioRoute,
   EntrarRoute: EntrarRoute,
   HumorRoute: HumorRoute,
