@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Quote, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { AppShell } from "@/components/AppShell";
@@ -36,8 +36,7 @@ const beneficios = [
 ];
 
 function Paywall() {
-  const { state, update } = useApp();
-  const navigate = useNavigate();
+  const { state } = useApp();
 
   function subscribe() {
     window.open(EDUZZ_CHECKOUT_URL, "_blank", "noopener,noreferrer");
