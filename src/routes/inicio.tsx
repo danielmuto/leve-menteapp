@@ -4,7 +4,14 @@ import { ArrowRight, BookOpen, Lock, Sparkles } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { ExerciseArt, MoodIcon, StreakTrail } from "@/components/Art";
 import { SupportNote } from "@/components/SupportNote";
-import { exercises, freeExercises, moods, premiumExercises } from "@/lib/exercises";
+import {
+  exercises,
+  freeExercises,
+  moods,
+  moodLabel,
+  premiumExercises,
+  thanksMessage,
+} from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -59,7 +66,7 @@ function Dashboard() {
               key={m.key}
               onClick={() => {
                 logMood(m.key);
-                toast.success("Anotado. Obrigada por se olhar hoje.");
+                toast.success(thanksMessage(state.pronoun));
               }}
               className={`flex min-h-[44px] items-center gap-2 rounded-full border px-3 py-2 text-sm transition-all ${
                 mood === m.key
@@ -68,7 +75,7 @@ function Dashboard() {
               }`}
             >
               <MoodIcon mood={m.key} size={24} active={mood === m.key} />
-              {m.label}
+              {moodLabel(m.key, state.pronoun)}
             </button>
           ))}
         </div>

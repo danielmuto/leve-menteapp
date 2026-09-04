@@ -259,3 +259,26 @@ export const moods: {
 export function moodInfo(key: string) {
   return moods.find((m) => m.key === key);
 }
+
+const masculineLabels: Record<MoodKey, string> = {
+  feliz: "Leve",
+  calma: "Calmo",
+  confusa: "Confuso",
+  ansiosa: "Ansioso",
+  triste: "Triste",
+  irritada: "Irritado",
+  sobrecarregada: "Sobrecarregado",
+};
+
+export function moodLabel(key: string, pronoun?: string) {
+  const m = moodInfo(key);
+  if (!m) return key;
+  if (pronoun === "ele") return masculineLabels[m.key] ?? m.label;
+  return m.label;
+}
+
+export function thanksMessage(pronoun?: string) {
+  return pronoun === "ele"
+    ? "Anotado. Obrigado por se olhar hoje."
+    : "Anotado. Obrigada por se olhar hoje.";
+}

@@ -6,7 +6,7 @@ import { SupportNote } from "@/components/SupportNote";
 import { AppShell } from "@/components/AppShell";
 import { MoodIcon } from "@/components/Art";
 import { AvatarPicker } from "@/components/AvatarPicker";
-import { moods } from "@/lib/exercises";
+import { moods, moodLabel } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,12 +40,14 @@ function Profile() {
   const [name, setName] = useState(state.name);
   const [email, setEmail] = useState(state.email ?? "");
   const [intention, setIntention] = useState(state.intention);
+  const [pronoun, setPronoun] = useState<"ela" | "ele" | "elu">(state.pronoun || "ela");
 
   useEffect(() => {
     setName(state.name);
     setEmail(state.email ?? "");
     setIntention(state.intention);
-  }, [state.name, state.email, state.intention]);
+    setPronoun(state.pronoun || "ela");
+  }, [state.name, state.email, state.intention, state.pronoun]);
 
 
 
@@ -58,7 +60,9 @@ function Profile() {
           onChange={(avatar) => update({ avatar })}
         />
         <div className="space-y-2">
-          <Label htmlFor="nome">Como quer ser chamada</Label>
+          <Label htmlFor="nome">
+            Como quer ser {pronoun === "ele" ? "chamado" : "chamada"}
+          </Label>
           <Input
             id="nome"
             value={name}
@@ -69,6 +73,28 @@ function Profile() {
             }}
             className="h-12 rounded-2xl"
           />
+        </div>
+        <div className="space-y-2">
+          <Label>Como o app deve te chamar?</Label>
+          <div className="flex gap-2">
+            {(["ela", "ele", "elu"] as const).map((p) => (
+              <button
+                key={p}
+                onClick={() => {
+                  setPronoun(p);
+                  update({ pronoun: p });
+                  toast.success("Preferência salva.");
+                }}
+                className={`flex-1 rounded-2xl border py-2.5 text-sm transition-all ${
+                  pronoun === p
+                    ? "border-primary bg-primary-soft/50 shadow-soft"
+                    : "border-border bg-card hover:bg-accent/50"
+                }`}
+              >
+                {p === "ela" ? "Ela" : p === "ele" ? "Ele" : "Elu"}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">E-mail</Label>
@@ -107,7 +133,7 @@ function Profile() {
                 }`}
               >
                 <MoodIcon mood={m.key} size={22} active={state.defaultMood === m.key} />
-                {m.label}
+                {moodLabel(m.key, state.pronoun)}
               </button>
             ))}
           </div>
