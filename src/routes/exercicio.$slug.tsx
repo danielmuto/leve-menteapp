@@ -103,6 +103,9 @@ function ExercisePage() {
             </Button>
           </div>
         </div>
+        <div className="mt-6 text-left">
+          <SupportNote compact />
+        </div>
       </AppShell>
     );
   }
