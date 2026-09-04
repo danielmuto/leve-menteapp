@@ -17,6 +17,8 @@ import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as HumorRouteImport } from './routes/humor'
 import { Route as InicioRouteImport } from './routes/inicio'
 import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as TermosRouteImport } from './routes/termos'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
 
@@ -60,6 +62,16 @@ const PerfilRoute = PerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermosRoute = TermosRouteImport.update({
+  id: '/termos',
+  path: '/termos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -80,6 +92,8 @@ export interface FileRoutesByFullPath {
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/termos': typeof TermosRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
@@ -92,6 +106,8 @@ export interface FileRoutesByTo {
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/termos': typeof TermosRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
@@ -105,6 +121,8 @@ export interface FileRoutesById {
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/termos': typeof TermosRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
@@ -119,6 +137,8 @@ export interface FileRouteTypes {
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/privacidade'
+    | '/termos'
     | '/api/transcribe'
     | '/exercicio/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +151,8 @@ export interface FileRouteTypes {
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/privacidade'
+    | '/termos'
     | '/api/transcribe'
     | '/exercicio/$slug'
   id:
@@ -143,6 +165,8 @@ export interface FileRouteTypes {
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/privacidade'
+    | '/termos'
     | '/api/transcribe'
     | '/exercicio/$slug'
   fileRoutesById: FileRoutesById
@@ -156,6 +180,8 @@ export interface RootRouteChildren {
   HumorRoute: typeof HumorRoute
   InicioRoute: typeof InicioRoute
   PerfilRoute: typeof PerfilRoute
+  PrivacidadeRoute: typeof PrivacidadeRoute
+  TermosRoute: typeof TermosRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ExercicioSlugRoute: typeof ExercicioSlugRoute
 }
@@ -218,6 +244,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerfilRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/termos': {
+      id: '/termos'
+      path: '/termos'
+      fullPath: '/termos'
+      preLoaderRoute: typeof TermosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -244,6 +284,8 @@ const rootRouteChildren: RootRouteChildren = {
   HumorRoute: HumorRoute,
   InicioRoute: InicioRoute,
   PerfilRoute: PerfilRoute,
+  PrivacidadeRoute: PrivacidadeRoute,
+  TermosRoute: TermosRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ExercicioSlugRoute: ExercicioSlugRoute,
 }
