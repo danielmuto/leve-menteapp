@@ -34,13 +34,24 @@ function Welcome() {
   const [name, setName] = useState("");
   const [mood, setMood] = useState<string>("calma");
   const [reminder, setReminder] = useState(true);
+  const [avatar, setAvatar] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [intention, setIntention] = useState("");
 
   useEffect(() => {
     if (hydrated && state.onboarded) navigate({ to: "/inicio" });
   }, [hydrated, state.onboarded, navigate]);
 
   function finish() {
-    update({ name: name.trim() || "você", defaultMood: mood, reminder, onboarded: true });
+    update({
+      name: name.trim() || "você",
+      defaultMood: mood,
+      reminder,
+      avatar,
+      email: email.trim() || null,
+      intention: intention.trim(),
+      onboarded: true,
+    });
     logMood(mood);
     navigate({ to: "/entrar" });
   }
