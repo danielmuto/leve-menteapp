@@ -98,7 +98,7 @@ function Dashboard() {
       <section className="fade-up mb-8 flex items-center gap-4 rounded-3xl border border-border bg-card p-5 paper">
         <div>
           <p className="text-sm text-muted-foreground">Sua trilha</p>
-          <p className="text-xl">
+          <p className="text-xl whitespace-nowrap">
             {streak} {streak === 1 ? "dia seguido" : "dias seguidos"}
           </p>
         </div>
