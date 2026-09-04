@@ -42,7 +42,14 @@ export type WavRecorder = { stop: () => Promise<Blob>; cancel: () => void };
 
 /** Captura PCM e devolve um WAV completo — seguro em todos os navegadores. */
 export async function startWavRecording(): Promise<WavRecorder> {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  const stream = await navigator.mediaDevices.getUserMedia({
+    audio: {
+      echoCancellation: true,
+      noiseSuppression: true,
+      autoGainControl: true,
+      channelCount: 1,
+    },
+  });
   const ctx = new AudioContext();
   if (ctx.state === "suspended") await ctx.resume().catch(() => {});
   const source = ctx.createMediaStreamSource(stream);
