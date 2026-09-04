@@ -137,7 +137,7 @@ function ExercisePage() {
                 onText={(text) =>
                   setValues((v) => ({
                     ...v,
-                    [f.key]: v[f.key] ? `${v[f.key].trimEnd()} ${text}` : text,
+                    [f.key]: `${(v[f.key] ?? "").trimEnd()} ${text}`.trim(),
                   }))
                 }
               />
