@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Quote, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { AppShell } from "@/components/AppShell";
@@ -6,6 +6,8 @@ import { ExerciseArt } from "@/components/Art";
 import { premiumExercises } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
+
+const EDUZZ_CHECKOUT_URL = "https://sun.eduzz.com/8017EERN07";
 
 export const Route = createFileRoute("/assinatura")({
   head: () => ({
@@ -34,14 +36,11 @@ const beneficios = [
 ];
 
 function Paywall() {
-  const { state, update } = useApp();
-  const navigate = useNavigate();
+  const { state } = useApp();
 
   function subscribe() {
-    // Checkout do Stripe entra aqui assim que as chaves forem conectadas.
-    update({ subscriber: true });
-    toast.success("Assinatura ativada. Tudo liberado para você.");
-    navigate({ to: "/inicio" });
+    window.open(EDUZZ_CHECKOUT_URL, "_blank", "noopener,noreferrer");
+    toast("Abrimos o checkout seguro em uma nova aba. Ao concluir o pagamento, sua assinatura é ativada.");
   }
 
   if (state.subscriber) {
