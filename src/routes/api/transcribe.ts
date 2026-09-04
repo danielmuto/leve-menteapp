@@ -18,9 +18,11 @@ export const Route = createFileRoute("/api/transcribe")({
         upstream.append("file", file, "recording.wav");
         upstream.append("stream", "true");
         upstream.append("language", "pt");
+        // temperatura 0 = transcrição literal, sem "criatividade"
+        upstream.append("temperature", "0");
         upstream.append(
           "prompt",
-          "Transcreva em português do Brasil, com pontuação e acentuação corretas. Contexto: diário de escrita terapêutica, fala espontânea sobre emoções, ansiedade, terapia e autocuidado.",
+          "Transcreva literalmente, palavra por palavra, exatamente o que for falado em português do Brasil. Não corrija, não reescreva, não resuma, não complete frases e não invente palavras. Se um trecho estiver inaudível, omita-o. Se não houver fala, devolva vazio.",
         );
 
         const res = await fetch("https://ai.gateway.lovable.dev/v1/audio/transcriptions", {
