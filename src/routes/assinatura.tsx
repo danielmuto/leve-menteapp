@@ -7,6 +7,8 @@ import { premiumExercises } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 
+const EDUZZ_CHECKOUT_URL = "https://sun.eduzz.com/8017EERN07";
+
 export const Route = createFileRoute("/assinatura")({
   head: () => ({
     meta: [
