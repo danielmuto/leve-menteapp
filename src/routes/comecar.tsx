@@ -4,7 +4,8 @@ import { ArrowRight, Bell, Check } from "lucide-react";
 import { HeaderWash, MoodIcon, ExerciseArt } from "@/components/Art";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { moods, freeExercises } from "@/lib/exercises";
-import logoAsset from "@/assets/logo-levemente.png.asset.json";
+import logoHorizontal from "@/assets/logo-horizontal.png.asset.json";
+import logoVertical from "@/assets/logo-vertical.png.asset.json";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -68,26 +69,23 @@ function Welcome() {
       </div>
 
       <main className="relative mx-auto flex min-h-screen w-full max-w-xl flex-col justify-center px-6 py-14">
-        <div className="absolute left-1/2 top-8 flex -translate-x-1/2 items-center gap-2">
+        <div className="absolute left-1/2 top-8 flex -translate-x-1/2 items-center">
           <img
-            src={logoAsset.url}
-            width={36}
-            height={36}
-            alt="Logotipo Levemente — pena em aquarela"
-            className="size-9"
+            src={logoHorizontal.url}
+            width={928}
+            height={246}
+            alt="Levemente"
+            className="h-8 w-auto mix-blend-multiply"
           />
-          <span className="bg-gradient-to-r from-primary to-success bg-clip-text font-display text-xl text-transparent">
-            Levemente
-          </span>
         </div>
         {step === 0 && (
           <section className="fade-up space-y-7 text-center">
             <img
-              src={logoAsset.url}
-              width={112}
-              height={112}
-              alt=""
-              className="mx-auto size-28 drop-shadow-lg"
+              src={logoVertical.url}
+              width={905}
+              height={574}
+              alt="Levemente — pena em aquarela"
+              className="mx-auto w-44 mix-blend-multiply drop-shadow-sm"
             />
             <div className="space-y-4">
               <h1 className="text-4xl leading-tight sm:text-5xl">
