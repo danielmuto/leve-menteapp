@@ -190,6 +190,10 @@ function Dashboard() {
           </div>
         </Link>
       </section>
+
+      <div className="mt-6">
+        <SupportNote />
+      </div>
     </AppShell>
   );
 }
