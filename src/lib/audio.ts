@@ -13,7 +13,16 @@ function encodeWav(chunks: Float32Array[], sampleRate: number, targetRate = 1600
   const outLength = Math.floor(merged.length / ratio);
   const samples = new Int16Array(outLength);
   for (let i = 0; i < outLength; i++) {
-    const v = merged[Math.floor(i * ratio)] ?? 0;
+    // Média da janela de origem (anti-aliasing) — fala mais nítida na transcrição.
+    const start = Math.floor(i * ratio);
+    const end = Math.min(merged.length, Math.floor((i + 1) * ratio));
+    let sum = 0;
+    let count = 0;
+    for (let j = start; j < end; j++) {
+      sum += merged[j] ?? 0;
+      count++;
+    }
+    const v = count ? sum / count : (merged[start] ?? 0);
     samples[i] = Math.max(-1, Math.min(1, v)) * 32767;
   }
 
