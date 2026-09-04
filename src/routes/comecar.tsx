@@ -38,6 +38,7 @@ function Welcome() {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [mood, setMood] = useState<string>("calma");
+  const [pronoun, setPronoun] = useState<"ela" | "ele" | "elu">("ela");
   const [reminder, setReminder] = useState(true);
   const [avatar, setAvatar] = useState<string | null>(null);
   const [email, setEmail] = useState("");
@@ -51,6 +52,7 @@ function Welcome() {
     update({
       name: name.trim() || "você",
       defaultMood: mood,
+      pronoun,
       reminder,
       avatar,
       email: email.trim() || null,
@@ -106,6 +108,24 @@ function Welcome() {
               className="h-14 rounded-2xl bg-card text-lg"
             />
             <div className="space-y-3">
+              <p className="text-sm font-medium">Como o app deve te chamar?</p>
+              <div className="flex gap-2">
+                {(["ela", "ele", "elu"] as const).map((p) => (
+                  <button
+                    key={p}
+                    onClick={() => setPronoun(p)}
+                    className={`flex-1 rounded-2xl border py-2.5 text-sm transition-all ${
+                      pronoun === p
+                        ? "border-primary bg-primary-soft/50 shadow-soft"
+                        : "border-border bg-card hover:bg-accent/50"
+                    }`}
+                  >
+                    {p === "ela" ? "Ela" : p === "ele" ? "Ele" : "Elu"}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="space-y-3">
               <p className="text-sm font-medium">E como você está agora?</p>
               <div className="grid grid-cols-3 gap-3">
                 {moods.map((m) => (
@@ -119,7 +139,7 @@ function Welcome() {
                     }`}
                   >
                     <MoodIcon mood={m.key} active={mood === m.key} />
-                    {m.label}
+                    {moodLabel(m.key, pronoun)}
                   </button>
                 ))}
               </div>
