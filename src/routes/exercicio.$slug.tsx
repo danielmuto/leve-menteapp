@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, Lock, Pause, Play, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { AppShell } from "@/components/AppShell";
+import { AudioMemo, type AudioNote } from "@/components/AudioMemo";
+import { VoiceInput } from "@/components/VoiceInput";
 import { ExerciseArt } from "@/components/Art";
 import { getExercise } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
@@ -32,6 +34,7 @@ function ExercisePage() {
   const { state, addEntry } = useApp();
   const exercise = getExercise(slug);
   const [values, setValues] = useState<Record<string, string>>({});
+  const [audios, setAudios] = useState<AudioNote[]>([]);
   const [done, setDone] = useState(false);
 
   if (!exercise) {
@@ -76,11 +79,11 @@ function ExercisePage() {
 
   function save() {
     const filled = Object.values(values).some((v) => v.trim().length > 0);
-    if (!filled) {
-      toast("Escreva ao menos uma linha — pode ser pequena.");
+    if (!filled && audios.length === 0) {
+      toast("Escreva, dite ou grave ao menos uma coisinha.");
       return;
     }
-    addEntry({ slug: exercise!.slug, title: exercise!.title, values });
+    addEntry({ slug: exercise!.slug, title: exercise!.title, values, audios });
     setDone(true);
   }
 
@@ -126,9 +129,19 @@ function ExercisePage() {
       <div className="space-y-5">
         {exercise.fields.map((f) => (
           <div key={f.key} className="rounded-3xl border border-border bg-card p-5 shadow-soft paper">
-            <label htmlFor={f.key} className="text-sm font-medium">
-              {f.label}
-            </label>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <label htmlFor={f.key} className="text-sm font-medium">
+                {f.label}
+              </label>
+              <VoiceInput
+                onText={(text) =>
+                  setValues((v) => ({
+                    ...v,
+                    [f.key]: `${(v[f.key] ?? "").trimEnd()} ${text}`.trim(),
+                  }))
+                }
+              />
+            </div>
             <Textarea
               id={f.key}
               rows={f.rows ?? 5}
@@ -139,6 +152,10 @@ function ExercisePage() {
             />
           </div>
         ))}
+      </div>
+
+      <div className="mt-6">
+        <AudioMemo notes={audios} onChange={setAudios} />
       </div>
 
       <Button size="lg" className="mt-7 min-h-12 w-full rounded-full" onClick={save}>

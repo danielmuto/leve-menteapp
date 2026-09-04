@@ -158,6 +158,16 @@ function Journal() {
                         </div>
                       ) : null,
                     )}
+                    {entry.audios?.length ? (
+                      <div className="space-y-2">
+                        <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                          Áudios
+                        </p>
+                        {entry.audios.map((a) => (
+                          <audio key={a.id} controls src={a.url} className="h-10 w-full max-w-sm" />
+                        ))}
+                      </div>
+                    ) : null}
                     <button
                       onClick={() => {
                         removeEntry(entry.id);
