@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import heroArt from "@/assets/hero-escrita.jpg";
 import psicologaArt from "@/assets/psicologa.jpg";
-import logoHorizontal from "@/assets/logo-horizontal.jpg.asset.json";
+import logoHorizontal from "@/assets/logo-horizontal.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
