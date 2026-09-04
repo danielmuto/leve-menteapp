@@ -37,6 +37,11 @@ function Profile() {
   const navigate = useNavigate();
   const [name, setName] = useState(state.name);
 
+  useEffect(() => {
+    setName(state.name);
+  }, [state.name]);
+
+
   return (
     <AppShell title="Seu perfil" subtitle="Pequenos ajustes para o app caber na sua rotina.">
       <section className="mb-5 space-y-5 rounded-3xl border border-border bg-card p-6 shadow-soft">
