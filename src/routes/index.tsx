@@ -54,15 +54,6 @@ function Feather({ className = "size-5" }: { className?: string }) {
   );
 }
 
-function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`bg-gradient-to-r from-primary to-success bg-clip-text font-display text-transparent ${className}`}
-    >
-      Levemente
-    </span>
-  );
-}
 
 function Cta({
   children,
