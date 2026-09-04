@@ -4,7 +4,6 @@ import { ArrowRight, Bell, Check } from "lucide-react";
 import { HeaderWash, MoodIcon, ExerciseArt } from "@/components/Art";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { moods, freeExercises } from "@/lib/exercises";
-import logoHorizontal from "@/assets/logo-horizontal.png.asset.json";
 import logoVertical from "@/assets/logo-vertical.png.asset.json";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
@@ -69,15 +68,6 @@ function Welcome() {
       </div>
 
       <main className="relative mx-auto flex min-h-screen w-full max-w-xl flex-col justify-center px-6 py-14">
-        <div className="absolute left-1/2 top-8 flex -translate-x-1/2 items-center">
-          <img
-            src={logoHorizontal.url}
-            width={928}
-            height={246}
-            alt="Levemente"
-            className="h-8 w-auto mix-blend-multiply"
-          />
-        </div>
         {step === 0 && (
           <section className="fade-up space-y-7 text-center">
             <img
