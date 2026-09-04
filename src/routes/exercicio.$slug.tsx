@@ -6,6 +6,7 @@ import { AppShell } from "@/components/AppShell";
 import { AudioMemo, type AudioNote } from "@/components/AudioMemo";
 import { VoiceInput } from "@/components/VoiceInput";
 import { ExerciseArt } from "@/components/Art";
+import { SupportNote } from "@/components/SupportNote";
 import { getExercise } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
@@ -102,6 +103,9 @@ function ExercisePage() {
               <Link to="/inicio">Voltar ao início</Link>
             </Button>
           </div>
+        </div>
+        <div className="mt-6 text-left">
+          <SupportNote compact />
         </div>
       </AppShell>
     );

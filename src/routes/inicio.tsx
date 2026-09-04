@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { ArrowRight, BookOpen, Lock, Sparkles } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { ExerciseArt, MoodIcon, StreakTrail } from "@/components/Art";
+import { SupportNote } from "@/components/SupportNote";
 import { exercises, freeExercises, moods, premiumExercises } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
@@ -190,6 +191,10 @@ function Dashboard() {
           </div>
         </Link>
       </section>
+
+      <div className="mt-6">
+        <SupportNote />
+      </div>
     </AppShell>
   );
 }

@@ -1,7 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { CreditCard, HeartHandshake, LogOut, ShieldAlert } from "lucide-react";
+import { CreditCard, HeartHandshake, LogOut } from "lucide-react";
+import { SupportNote } from "@/components/SupportNote";
 import { AppShell } from "@/components/AppShell";
 import { MoodIcon } from "@/components/Art";
 import { moods } from "@/lib/exercises";
@@ -158,14 +159,9 @@ function Profile() {
         </Accordion>
       </section>
 
-      <section className="mb-5 flex items-start gap-3 rounded-3xl border border-border bg-secondary p-6">
-        <ShieldAlert className="mt-0.5 size-5 shrink-0 text-primary" strokeWidth={1.6} />
-        <p className="text-sm text-muted-foreground">
-          Este aplicativo é um apoio à escrita terapêutica e <strong>não substitui</strong>{" "}
-          acompanhamento psicológico ou psiquiátrico. Se estiver em sofrimento intenso, procure um
-          profissional ou ligue para o CVV (188).
-        </p>
-      </section>
+      <div className="mb-5">
+        <SupportNote />
+      </div>
 
       <div className="flex items-center justify-between gap-3">
         <p className="flex items-center gap-2 text-sm text-muted-foreground">
