@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DiarioRouteImport } from './routes/diario'
 import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as InicioRouteImport } from './routes/inicio'
 import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
@@ -17,6 +18,11 @@ import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiarioRoute = DiarioRouteImport.update({
+  id: '/diario',
+  path: '/diario',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EntrarRoute = EntrarRouteImport.update({
@@ -37,12 +43,14 @@ const ExercicioSlugRoute = ExercicioSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/inicio': typeof InicioRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/inicio': typeof InicioRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/inicio': typeof InicioRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/entrar' | '/inicio' | '/exercicio/$slug'
+  fullPaths: '/' | '/diario' | '/entrar' | '/inicio' | '/exercicio/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/entrar' | '/inicio' | '/exercicio/$slug'
-  id: '__root__' | '/' | '/entrar' | '/inicio' | '/exercicio/$slug'
+  to: '/' | '/diario' | '/entrar' | '/inicio' | '/exercicio/$slug'
+  id: '__root__' | '/' | '/diario' | '/entrar' | '/inicio' | '/exercicio/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DiarioRoute: typeof DiarioRoute
   EntrarRoute: typeof EntrarRoute
   InicioRoute: typeof InicioRoute
   ExercicioSlugRoute: typeof ExercicioSlugRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diario': {
+      id: '/diario'
+      path: '/diario'
+      fullPath: '/diario'
+      preLoaderRoute: typeof DiarioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/entrar': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DiarioRoute: DiarioRoute,
   EntrarRoute: EntrarRoute,
   InicioRoute: InicioRoute,
   ExercicioSlugRoute: ExercicioSlugRoute,
