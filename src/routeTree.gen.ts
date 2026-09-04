@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssinaturaRouteImport } from './routes/assinatura'
+import { Route as DiarioRouteImport } from './routes/diario'
+import { Route as EntrarRouteImport } from './routes/entrar'
+import { Route as HumorRouteImport } from './routes/humor'
+import { Route as InicioRouteImport } from './routes/inicio'
+import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssinaturaRoute = AssinaturaRouteImport.update({
+  id: '/assinatura',
+  path: '/assinatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiarioRoute = DiarioRouteImport.update({
+  id: '/diario',
+  path: '/diario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrarRoute = EntrarRouteImport.update({
+  id: '/entrar',
+  path: '/entrar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HumorRoute = HumorRouteImport.update({
+  id: '/humor',
+  path: '/humor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InicioRoute = InicioRouteImport.update({
+  id: '/inicio',
+  path: '/inicio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExercicioSlugRoute = ExercicioSlugRouteImport.update({
+  id: '/exercicio/$slug',
+  path: '/exercicio/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assinatura': typeof AssinaturaRoute
+  '/diario': typeof DiarioRoute
+  '/entrar': typeof EntrarRoute
+  '/humor': typeof HumorRoute
+  '/inicio': typeof InicioRoute
+  '/perfil': typeof PerfilRoute
+  '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assinatura': typeof AssinaturaRoute
+  '/diario': typeof DiarioRoute
+  '/entrar': typeof EntrarRoute
+  '/humor': typeof HumorRoute
+  '/inicio': typeof InicioRoute
+  '/perfil': typeof PerfilRoute
+  '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assinatura': typeof AssinaturaRoute
+  '/diario': typeof DiarioRoute
+  '/entrar': typeof EntrarRoute
+  '/humor': typeof HumorRoute
+  '/inicio': typeof InicioRoute
+  '/perfil': typeof PerfilRoute
+  '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/assinatura'
+    | '/diario'
+    | '/entrar'
+    | '/humor'
+    | '/inicio'
+    | '/perfil'
+    | '/exercicio/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assinatura'
+    | '/diario'
+    | '/entrar'
+    | '/humor'
+    | '/inicio'
+    | '/perfil'
+    | '/exercicio/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/assinatura'
+    | '/diario'
+    | '/entrar'
+    | '/humor'
+    | '/inicio'
+    | '/perfil'
+    | '/exercicio/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssinaturaRoute: typeof AssinaturaRoute
+  DiarioRoute: typeof DiarioRoute
+  EntrarRoute: typeof EntrarRoute
+  HumorRoute: typeof HumorRoute
+  InicioRoute: typeof InicioRoute
+  PerfilRoute: typeof PerfilRoute
+  ExercicioSlugRoute: typeof ExercicioSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assinatura': {
+      id: '/assinatura'
+      path: '/assinatura'
+      fullPath: '/assinatura'
+      preLoaderRoute: typeof AssinaturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diario': {
+      id: '/diario'
+      path: '/diario'
+      fullPath: '/diario'
+      preLoaderRoute: typeof DiarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrar': {
+      id: '/entrar'
+      path: '/entrar'
+      fullPath: '/entrar'
+      preLoaderRoute: typeof EntrarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/humor': {
+      id: '/humor'
+      path: '/humor'
+      fullPath: '/humor'
+      preLoaderRoute: typeof HumorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inicio': {
+      id: '/inicio'
+      path: '/inicio'
+      fullPath: '/inicio'
+      preLoaderRoute: typeof InicioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exercicio/$slug': {
+      id: '/exercicio/$slug'
+      path: '/exercicio/$slug'
+      fullPath: '/exercicio/$slug'
+      preLoaderRoute: typeof ExercicioSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssinaturaRoute: AssinaturaRoute,
+  DiarioRoute: DiarioRoute,
+  EntrarRoute: EntrarRoute,
+  HumorRoute: HumorRoute,
+  InicioRoute: InicioRoute,
+  PerfilRoute: PerfilRoute,
+  ExercicioSlugRoute: ExercicioSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
