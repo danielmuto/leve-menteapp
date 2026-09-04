@@ -108,7 +108,7 @@ export function ExerciseArt({
       aria-hidden="true"
     >
       <Wash />
-      {motifs[kind] ?? motifs.list}
+      {motifs[kind] ?? motifs["list"]}
     </svg>
   );
 }
@@ -138,7 +138,7 @@ export function MoodIcon({
       <circle cx="12" cy="14" r="1.7" fill="var(--foreground)" opacity="0.8" />
       <circle cx="22" cy="14" r="1.7" fill="var(--foreground)" opacity="0.8" />
       <path
-        d={mouth[mood] ?? mouth.calma}
+        d={mouth[mood] ?? mouth["calma"]}
         fill="none"
         stroke="var(--foreground)"
         strokeWidth="1.6"
