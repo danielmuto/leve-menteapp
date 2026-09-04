@@ -15,6 +15,7 @@ import { Route as DiarioRouteImport } from './routes/diario'
 import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as HumorRouteImport } from './routes/humor'
 import { Route as InicioRouteImport } from './routes/inicio'
+import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const InicioRoute = InicioRouteImport.update({
   path: '/inicio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExercicioSlugRoute = ExercicioSlugRouteImport.update({
   id: '/exercicio/$slug',
   path: '/exercicio/$slug',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
+  '/perfil': typeof PerfilRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
+  '/perfil': typeof PerfilRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
+  '/perfil': typeof PerfilRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/entrar'
     | '/humor'
     | '/inicio'
+    | '/perfil'
     | '/exercicio/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/entrar'
     | '/humor'
     | '/inicio'
+    | '/perfil'
     | '/exercicio/$slug'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/entrar'
     | '/humor'
     | '/inicio'
+    | '/perfil'
     | '/exercicio/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   EntrarRoute: typeof EntrarRoute
   HumorRoute: typeof HumorRoute
   InicioRoute: typeof InicioRoute
+  PerfilRoute: typeof PerfilRoute
   ExercicioSlugRoute: typeof ExercicioSlugRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InicioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/exercicio/$slug': {
       id: '/exercicio/$slug'
       path: '/exercicio/$slug'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntrarRoute: EntrarRoute,
   HumorRoute: HumorRoute,
   InicioRoute: InicioRoute,
+  PerfilRoute: PerfilRoute,
   ExercicioSlugRoute: ExercicioSlugRoute,
 }
 export const routeTree = rootRouteImport
