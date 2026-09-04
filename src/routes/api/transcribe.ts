@@ -17,6 +17,11 @@ export const Route = createFileRoute("/api/transcribe")({
         upstream.append("model", "openai/gpt-4o-transcribe");
         upstream.append("file", file, "recording.wav");
         upstream.append("stream", "true");
+        upstream.append("language", "pt");
+        upstream.append(
+          "prompt",
+          "Transcreva em português do Brasil, com pontuação e acentuação corretas. Contexto: diário de escrita terapêutica, fala espontânea sobre emoções, ansiedade, terapia e autocuidado.",
+        );
 
         const res = await fetch("https://ai.gateway.lovable.dev/v1/audio/transcriptions", {
           method: "POST",
