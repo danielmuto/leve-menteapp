@@ -37,10 +37,15 @@ function Profile() {
   const { state, update, reset } = useApp();
   const navigate = useNavigate();
   const [name, setName] = useState(state.name);
+  const [email, setEmail] = useState(state.email ?? "");
+  const [intention, setIntention] = useState(state.intention);
 
   useEffect(() => {
     setName(state.name);
-  }, [state.name]);
+    setEmail(state.email ?? "");
+    setIntention(state.intention);
+  }, [state.name, state.email, state.intention]);
+
 
 
   return (
