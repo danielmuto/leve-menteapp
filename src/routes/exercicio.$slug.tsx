@@ -6,6 +6,7 @@ import { AppShell } from "@/components/AppShell";
 import { AudioMemo, type AudioNote } from "@/components/AudioMemo";
 import { VoiceInput } from "@/components/VoiceInput";
 import { ExerciseArt } from "@/components/Art";
+import { SupportNote } from "@/components/SupportNote";
 import { getExercise } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
