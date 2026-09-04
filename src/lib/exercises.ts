@@ -234,13 +234,26 @@ export function getExercise(slug: string) {
 
 export type MoodKey = "calma" | "feliz" | "ansiosa" | "triste" | "irritada" | "sobrecarregada";
 
-export const moods: { key: MoodKey; label: string; color: string; score: number }[] = [
-  { key: "feliz", label: "Leve", color: "var(--chart-4)", score: 5 },
-  { key: "calma", label: "Calma", color: "var(--success)", score: 4 },
-  { key: "confusa" as MoodKey, label: "Confusa", color: "var(--chart-5)", score: 3 },
-  { key: "ansiosa", label: "Ansiosa", color: "var(--primary)", score: 2 },
-  { key: "triste", label: "Triste", color: "var(--mauve)", score: 2 },
-  { key: "sobrecarregada", label: "Sobrecarregada", color: "var(--destructive)", score: 1 },
+export const moods: {
+  key: MoodKey;
+  label: string;
+  color: string;
+  score: number;
+  emoji: string;
+}[] = [
+  { key: "feliz", label: "Leve", color: "var(--chart-4)", score: 5, emoji: "😊" },
+  { key: "calma", label: "Calma", color: "var(--success)", score: 4, emoji: "😌" },
+  { key: "confusa" as MoodKey, label: "Confusa", color: "var(--chart-5)", score: 3, emoji: "😕" },
+  { key: "ansiosa", label: "Ansiosa", color: "var(--primary)", score: 2, emoji: "😰" },
+  { key: "triste", label: "Triste", color: "var(--mauve)", score: 2, emoji: "😢" },
+  { key: "irritada", label: "Irritada", color: "var(--chart-3)", score: 2, emoji: "😠" },
+  {
+    key: "sobrecarregada",
+    label: "Sobrecarregada",
+    color: "var(--destructive)",
+    score: 1,
+    emoji: "😵‍💫",
+  },
 ];
 
 export function moodInfo(key: string) {

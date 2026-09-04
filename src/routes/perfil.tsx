@@ -5,6 +5,7 @@ import { CreditCard, HeartHandshake, LogOut } from "lucide-react";
 import { SupportNote } from "@/components/SupportNote";
 import { AppShell } from "@/components/AppShell";
 import { MoodIcon } from "@/components/Art";
+import { AvatarPicker } from "@/components/AvatarPicker";
 import { moods } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
@@ -37,15 +38,25 @@ function Profile() {
   const { state, update, reset } = useApp();
   const navigate = useNavigate();
   const [name, setName] = useState(state.name);
+  const [email, setEmail] = useState(state.email ?? "");
+  const [intention, setIntention] = useState(state.intention);
 
   useEffect(() => {
     setName(state.name);
-  }, [state.name]);
+    setEmail(state.email ?? "");
+    setIntention(state.intention);
+  }, [state.name, state.email, state.intention]);
+
 
 
   return (
     <AppShell title="Seu perfil" subtitle="Pequenos ajustes para o app caber na sua rotina.">
       <section className="mb-5 space-y-5 rounded-3xl border border-border bg-card p-6 shadow-soft">
+        <AvatarPicker
+          value={state.avatar}
+          name={state.name}
+          onChange={(avatar) => update({ avatar })}
+        />
         <div className="space-y-2">
           <Label htmlFor="nome">Como quer ser chamada</Label>
           <Input
@@ -56,6 +67,29 @@ function Profile() {
               update({ name: name.trim() });
               toast.success("Nome atualizado.");
             }}
+            className="h-12 rounded-2xl"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="email">E-mail</Label>
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            placeholder="seu@email.com"
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={() => update({ email: email.trim() || null })}
+            className="h-12 rounded-2xl"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="intencao">O que te trouxe até aqui</Label>
+          <Input
+            id="intencao"
+            value={intention}
+            placeholder="Ex.: entender minha ansiedade"
+            onChange={(e) => setIntention(e.target.value)}
+            onBlur={() => update({ intention: intention.trim() })}
             className="h-12 rounded-2xl"
           />
         </div>

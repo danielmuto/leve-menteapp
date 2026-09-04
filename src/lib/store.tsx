@@ -22,6 +22,9 @@ export type MoodLog = { date: string; mood: string };
 export type AppState = {
   name: string;
   email: string | null;
+  avatar: string | null;
+  pronoun: string;
+  intention: string;
   onboarded: boolean;
   defaultMood: string;
   reminder: boolean;
@@ -34,6 +37,9 @@ export type AppState = {
 const EMPTY: AppState = {
   name: "",
   email: null,
+  avatar: null,
+  pronoun: "ela",
+  intention: "",
   onboarded: false,
   defaultMood: "calma",
   reminder: true,
