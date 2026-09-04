@@ -12,17 +12,20 @@ import { Switch } from "@/components/ui/switch";
 export const Route = createFileRoute("/comecar")({
   head: () => ({
     meta: [
-      { title: "Escrita Terapêutica — comece hoje, com 4 exercícios gratuitos" },
+      { title: "Criar sua conta — Levemente" },
       {
         name: "description",
         content:
-          "Um diário guiado criado por psicóloga clínica: escreva para organizar pensamentos, entender gatilhos e acalmar a ansiedade.",
+          "Comece grátis no Levemente: diário guiado criado por psicóloga clínica, com 4 exercícios sempre gratuitos.",
       },
-      { property: "og:title", content: "Escrita Terapêutica — diário guiado para a ansiedade" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { property: "og:title", content: "Criar sua conta — Levemente" },
       {
         property: "og:description",
         content: "Quatro exercícios gratuitos para começar hoje. Sem julgamentos, no seu ritmo.",
       },
+
     ],
   }),
   component: Welcome,
