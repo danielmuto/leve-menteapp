@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import heroArt from "@/assets/hero-escrita.jpg";
 import psicologaArt from "@/assets/psicologa.jpg";
-import logoAsset from "@/assets/logo-levemente.png.asset.json";
+import logoHorizontal from "@/assets/logo-horizontal.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -151,15 +151,14 @@ function Landing() {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
-          <span className="flex items-center gap-2 text-lg">
+          <span className="flex items-center">
             <img
-              src={logoAsset.url}
-              width={32}
-              height={32}
-              alt="Logotipo Levemente — pena em aquarela"
-              className="size-8"
+              src={logoHorizontal.url}
+              width={928}
+              height={246}
+              alt="Levemente"
+              className="h-8 w-auto mix-blend-multiply"
             />
-            <Wordmark className="text-xl" />
           </span>
           <Button asChild variant="ghost" className="rounded-full">
             <Link to="/entrar">Entrar</Link>
@@ -353,16 +352,15 @@ function Landing() {
       </section>
 
       <footer className="mx-auto max-w-4xl space-y-4 px-5 py-12 text-sm text-muted-foreground">
-        <p className="flex items-center gap-2">
+        <p className="flex items-center">
           <img
-            src={logoAsset.url}
-            width={28}
-            height={28}
+            src={logoHorizontal.url}
+            width={928}
+            height={246}
             loading="lazy"
-            alt=""
-            className="size-7"
+            alt="Levemente"
+            className="h-7 w-auto mix-blend-multiply"
           />
-          <Wordmark className="font-medium" />
         </p>
         <p className="flex items-start gap-2">
           <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
