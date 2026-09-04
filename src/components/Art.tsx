@@ -117,44 +117,31 @@ export function MoodIcon({
   mood,
   size = 34,
   active = false,
+  className = "",
 }: {
   mood: string;
   size?: number;
   active?: boolean;
+  className?: string;
 }) {
   const info = moodInfo(mood);
   const color = info?.color ?? "var(--primary)";
-  const mouth: Record<string, string> = {
-    feliz: "M11 20c3 4 9 4 12 0",
-    calma: "M11 20h12",
-    confusa: "M11 21c3-3 5 2 8-1s3 0 4 0",
-    ansiosa: "M11 22c2-3 4 1 6-1s4 2 6-1",
-    triste: "M11 22c3-4 9-4 12 0",
-    sobrecarregada: "M12 21h10",
-  };
+  const emoji = info?.emoji ?? "🙂";
   return (
-    <svg width={size} height={size} viewBox="0 0 34 34" aria-hidden="true">
-      <circle cx="17" cy="17" r="16" fill={color} opacity={active ? 0.32 : 0.16} />
-      <circle cx="12" cy="14" r="1.7" fill="var(--foreground)" opacity="0.8" />
-      <circle cx="22" cy="14" r="1.7" fill="var(--foreground)" opacity="0.8" />
-      <path
-        d={mouth[mood] ?? mouth["calma"]}
-        fill="none"
-        stroke="var(--foreground)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        opacity="0.8"
-      />
-      {mood === "sobrecarregada" && (
-        <path
-          d="M8 7c2 2 4 0 6 2M20 7c2 2 4 0 6 2"
-          fill="none"
-          stroke={color}
-          strokeWidth="1.6"
-          strokeLinecap="round"
-        />
-      )}
-    </svg>
+    <span
+      className={`inline-flex shrink-0 items-center justify-center rounded-full transition-all ${className}`}
+      style={{
+        width: size,
+        height: size,
+        background: `color-mix(in oklab, ${color} ${active ? 34 : 16}%, transparent)`,
+        fontSize: size * 0.58,
+        lineHeight: 1,
+      }}
+      role="img"
+      aria-label={info?.label ?? mood}
+    >
+      {emoji}
+    </span>
   );
 }
 
