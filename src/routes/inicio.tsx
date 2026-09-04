@@ -66,7 +66,7 @@ function Dashboard() {
               key={m.key}
               onClick={() => {
                 logMood(m.key);
-                toast.success("Anotado. Obrigada por se olhar hoje.");
+                toast.success(thanksMessage(state.pronoun));
               }}
               className={`flex min-h-[44px] items-center gap-2 rounded-full border px-3 py-2 text-sm transition-all ${
                 mood === m.key
@@ -75,7 +75,7 @@ function Dashboard() {
               }`}
             >
               <MoodIcon mood={m.key} size={24} active={mood === m.key} />
-              {m.label}
+              {moodLabel(m.key, state.pronoun)}
             </button>
           ))}
         </div>
