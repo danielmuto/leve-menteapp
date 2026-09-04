@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as InicioRouteImport } from './routes/inicio'
+import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const InicioRoute = InicioRouteImport.update({
   path: '/inicio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExercicioSlugRoute = ExercicioSlugRouteImport.update({
+  id: '/exercicio/$slug',
+  path: '/exercicio/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/entrar': typeof EntrarRoute
   '/inicio': typeof InicioRoute
+  '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/entrar': typeof EntrarRoute
   '/inicio': typeof InicioRoute
+  '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/entrar': typeof EntrarRoute
   '/inicio': typeof InicioRoute
+  '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/entrar' | '/inicio'
+  fullPaths: '/' | '/entrar' | '/inicio' | '/exercicio/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/entrar' | '/inicio'
-  id: '__root__' | '/' | '/entrar' | '/inicio'
+  to: '/' | '/entrar' | '/inicio' | '/exercicio/$slug'
+  id: '__root__' | '/' | '/entrar' | '/inicio' | '/exercicio/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EntrarRoute: typeof EntrarRoute
   InicioRoute: typeof InicioRoute
+  ExercicioSlugRoute: typeof ExercicioSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InicioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/exercicio/$slug': {
+      id: '/exercicio/$slug'
+      path: '/exercicio/$slug'
+      fullPath: '/exercicio/$slug'
+      preLoaderRoute: typeof ExercicioSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EntrarRoute: EntrarRoute,
   InicioRoute: InicioRoute,
+  ExercicioSlugRoute: ExercicioSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
