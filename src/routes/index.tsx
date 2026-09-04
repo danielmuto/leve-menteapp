@@ -251,12 +251,10 @@ function Landing() {
       <section className="bg-secondary/50 py-16">
         <div className="mx-auto grid max-w-4xl items-center gap-8 px-5 sm:grid-cols-[260px_1fr]">
           <img
-            src={psicologaArt}
-            width={900}
-            height={1100}
+            src="/uploads/wmremove-transformed.png"
             loading="lazy"
-            alt="Ilustração em aquarela da psicóloga criadora do método"
-            className="rounded-4xl shadow-soft"
+            alt="Foto da psicóloga criadora do método"
+            className="rounded-4xl shadow-soft w-full h-auto object-cover aspect-[4/5]"
           />
           <div className="space-y-4">
             <Feather className="size-6 text-primary" />
