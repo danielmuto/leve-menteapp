@@ -110,6 +110,49 @@ function Welcome() {
 
         {step === 2 && (
           <section className="fade-up space-y-7">
+            <div className="space-y-2">
+              <h1 className="text-3xl">Um cadastro bem pequeno</h1>
+              <p className="text-muted-foreground">
+                Tudo opcional e guardado no seu dispositivo. Serve só para o app te acolher pelo
+                nome.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-card p-5">
+              <AvatarPicker value={avatar} name={name} onChange={setAvatar} />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-sm font-medium">
+                E-mail (para recuperar seu acesso)
+              </label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="seu@email.com"
+                className="h-14 rounded-2xl bg-card text-lg"
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="intencao" className="text-sm font-medium">
+                O que te trouxe até aqui?
+              </label>
+              <Input
+                id="intencao"
+                value={intention}
+                onChange={(e) => setIntention(e.target.value)}
+                placeholder="Ex.: entender minha ansiedade"
+                className="h-14 rounded-2xl bg-card text-lg"
+              />
+            </div>
+            <Button size="lg" className="min-h-12 w-full rounded-full" onClick={() => setStep(3)}>
+              Continuar
+            </Button>
+          </section>
+        )}
+
+        {step === 3 && (
+          <section className="fade-up space-y-7">
             <ExerciseArt kind="flow" size={100} />
             <div className="space-y-3">
               <h1 className="text-3xl">Um compromisso de 21 dias</h1>
@@ -125,13 +168,13 @@ function Welcome() {
               </span>
               <Switch checked={reminder} onCheckedChange={setReminder} />
             </label>
-            <Button size="lg" className="min-h-12 w-full rounded-full" onClick={() => setStep(3)}>
+            <Button size="lg" className="min-h-12 w-full rounded-full" onClick={() => setStep(4)}>
               Aceito o convite
             </Button>
           </section>
         )}
 
-        {step === 3 && (
+        {step === 4 && (
           <section className="fade-up space-y-7">
             <div className="space-y-3">
               <h1 className="text-3xl">4 exercícios gratuitos para começar hoje</h1>
