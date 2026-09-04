@@ -5,6 +5,7 @@ import { CreditCard, HeartHandshake, LogOut } from "lucide-react";
 import { SupportNote } from "@/components/SupportNote";
 import { AppShell } from "@/components/AppShell";
 import { MoodIcon } from "@/components/Art";
+import { AvatarPicker } from "@/components/AvatarPicker";
 import { moods } from "@/lib/exercises";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
