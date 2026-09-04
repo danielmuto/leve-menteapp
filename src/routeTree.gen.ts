@@ -16,6 +16,7 @@ import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as HumorRouteImport } from './routes/humor'
 import { Route as InicioRouteImport } from './routes/inicio'
 import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,11 @@ const PerfilRoute = PerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
+  id: '/api/transcribe',
+  path: '/api/transcribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExercicioSlugRoute = ExercicioSlugRouteImport.update({
   id: '/exercicio/$slug',
   path: '/exercicio/$slug',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/api/transcribe'
     | '/exercicio/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/api/transcribe'
     | '/exercicio/$slug'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/api/transcribe'
     | '/exercicio/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   HumorRoute: typeof HumorRoute
   InicioRoute: typeof InicioRoute
   PerfilRoute: typeof PerfilRoute
+  ApiTranscribeRoute: typeof ApiTranscribeRoute
   ExercicioSlugRoute: typeof ExercicioSlugRoute
 }
 
@@ -185,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerfilRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/transcribe': {
+      id: '/api/transcribe'
+      path: '/api/transcribe'
+      fullPath: '/api/transcribe'
+      preLoaderRoute: typeof ApiTranscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/exercicio/$slug': {
       id: '/exercicio/$slug'
       path: '/exercicio/$slug'
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   HumorRoute: HumorRoute,
   InicioRoute: InicioRoute,
   PerfilRoute: PerfilRoute,
+  ApiTranscribeRoute: ApiTranscribeRoute,
   ExercicioSlugRoute: ExercicioSlugRoute,
 }
 export const routeTree = rootRouteImport
