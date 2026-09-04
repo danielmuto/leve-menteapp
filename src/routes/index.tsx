@@ -273,28 +273,6 @@ function Landing() {
         </div>
       </section>
 
-      {/* PROVA SOCIAL */}
-      <section className="mx-auto max-w-5xl px-5 py-16">
-        <h2 className="text-center text-3xl">Quem já começou</h2>
-        <p className="mt-3 text-center text-muted-foreground">
-          +1.200 pessoas já começaram sua jornada de escrita
-        </p>
-        <div className="mt-10 grid gap-5 sm:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <figure
-              key={i}
-              className="paper rounded-3xl border border-border bg-card p-6 shadow-soft"
-            >
-              <Feather className="size-5 text-primary/70" />
-              <blockquote className="journal-text mt-3 text-muted-foreground">
-                [espaço reservado para depoimento]
-              </blockquote>
-              <figcaption className="mt-4 text-sm text-muted-foreground">— Nome, cidade</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
       {/* ASSINATURA */}
       <section className="mx-auto max-w-3xl px-5 pb-16">
         <div className="rounded-4xl border border-mauve-soft bg-mauve-soft/50 p-8 text-center">
