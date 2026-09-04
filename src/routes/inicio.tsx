@@ -37,7 +37,7 @@ function Dashboard() {
   const { state, hydrated, todayMood, logMood, streak, visibleEntries } = useApp();
 
   useEffect(() => {
-    if (hydrated && !state.onboarded) navigate({ to: "/" });
+    if (hydrated && !state.onboarded) navigate({ to: "/comecar" });
   }, [hydrated, state.onboarded, navigate]);
 
   const mood = todayMood ?? state.defaultMood;

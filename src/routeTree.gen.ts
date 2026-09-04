@@ -11,11 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssinaturaRouteImport } from './routes/assinatura'
+import { Route as ComecarRouteImport } from './routes/comecar'
 import { Route as DiarioRouteImport } from './routes/diario'
 import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as HumorRouteImport } from './routes/humor'
 import { Route as InicioRouteImport } from './routes/inicio'
 import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as TermosRouteImport } from './routes/termos'
 import { Route as ApiTranscribeRouteImport } from './routes/api/transcribe'
 import { Route as ExercicioSlugRouteImport } from './routes/exercicio.$slug'
 
@@ -27,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 const AssinaturaRoute = AssinaturaRouteImport.update({
   id: '/assinatura',
   path: '/assinatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComecarRoute = ComecarRouteImport.update({
+  id: '/comecar',
+  path: '/comecar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DiarioRoute = DiarioRouteImport.update({
@@ -54,6 +62,16 @@ const PerfilRoute = PerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermosRoute = TermosRouteImport.update({
+  id: '/termos',
+  path: '/termos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiTranscribeRoute = ApiTranscribeRouteImport.update({
   id: '/api/transcribe',
   path: '/api/transcribe',
@@ -68,22 +86,28 @@ const ExercicioSlugRoute = ExercicioSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assinatura': typeof AssinaturaRoute
+  '/comecar': typeof ComecarRoute
   '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/termos': typeof TermosRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assinatura': typeof AssinaturaRoute
+  '/comecar': typeof ComecarRoute
   '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/termos': typeof TermosRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
@@ -91,11 +115,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assinatura': typeof AssinaturaRoute
+  '/comecar': typeof ComecarRoute
   '/diario': typeof DiarioRoute
   '/entrar': typeof EntrarRoute
   '/humor': typeof HumorRoute
   '/inicio': typeof InicioRoute
   '/perfil': typeof PerfilRoute
+  '/privacidade': typeof PrivacidadeRoute
+  '/termos': typeof TermosRoute
   '/api/transcribe': typeof ApiTranscribeRoute
   '/exercicio/$slug': typeof ExercicioSlugRoute
 }
@@ -104,33 +131,42 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/assinatura'
+    | '/comecar'
     | '/diario'
     | '/entrar'
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/privacidade'
+    | '/termos'
     | '/api/transcribe'
     | '/exercicio/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/assinatura'
+    | '/comecar'
     | '/diario'
     | '/entrar'
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/privacidade'
+    | '/termos'
     | '/api/transcribe'
     | '/exercicio/$slug'
   id:
     | '__root__'
     | '/'
     | '/assinatura'
+    | '/comecar'
     | '/diario'
     | '/entrar'
     | '/humor'
     | '/inicio'
     | '/perfil'
+    | '/privacidade'
+    | '/termos'
     | '/api/transcribe'
     | '/exercicio/$slug'
   fileRoutesById: FileRoutesById
@@ -138,11 +174,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssinaturaRoute: typeof AssinaturaRoute
+  ComecarRoute: typeof ComecarRoute
   DiarioRoute: typeof DiarioRoute
   EntrarRoute: typeof EntrarRoute
   HumorRoute: typeof HumorRoute
   InicioRoute: typeof InicioRoute
   PerfilRoute: typeof PerfilRoute
+  PrivacidadeRoute: typeof PrivacidadeRoute
+  TermosRoute: typeof TermosRoute
   ApiTranscribeRoute: typeof ApiTranscribeRoute
   ExercicioSlugRoute: typeof ExercicioSlugRoute
 }
@@ -161,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/assinatura'
       fullPath: '/assinatura'
       preLoaderRoute: typeof AssinaturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comecar': {
+      id: '/comecar'
+      path: '/comecar'
+      fullPath: '/comecar'
+      preLoaderRoute: typeof ComecarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/diario': {
@@ -198,6 +244,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerfilRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/termos': {
+      id: '/termos'
+      path: '/termos'
+      fullPath: '/termos'
+      preLoaderRoute: typeof TermosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/transcribe': {
       id: '/api/transcribe'
       path: '/api/transcribe'
@@ -218,11 +278,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssinaturaRoute: AssinaturaRoute,
+  ComecarRoute: ComecarRoute,
   DiarioRoute: DiarioRoute,
   EntrarRoute: EntrarRoute,
   HumorRoute: HumorRoute,
   InicioRoute: InicioRoute,
   PerfilRoute: PerfilRoute,
+  PrivacidadeRoute: PrivacidadeRoute,
+  TermosRoute: TermosRoute,
   ApiTranscribeRoute: ApiTranscribeRoute,
   ExercicioSlugRoute: ExercicioSlugRoute,
 }
