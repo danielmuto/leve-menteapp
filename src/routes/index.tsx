@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import heroArt from "@/assets/hero-escrita.jpg";
 import psicologaArt from "@/assets/psicologa.jpg";
+import logoAsset from "@/assets/logo-levemente.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -151,7 +152,13 @@ function Landing() {
       <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
           <span className="flex items-center gap-2 text-lg">
-            <Feather className="size-5 text-primary" />
+            <img
+              src={logoAsset.url}
+              width={32}
+              height={32}
+              alt="Logotipo Levemente — pena em aquarela"
+              className="size-8"
+            />
             <Wordmark className="text-xl" />
           </span>
           <Button asChild variant="ghost" className="rounded-full">
@@ -346,9 +353,21 @@ function Landing() {
       </section>
 
       <footer className="mx-auto max-w-4xl space-y-4 px-5 py-12 text-sm text-muted-foreground">
+        <p className="flex items-center gap-2">
+          <img
+            src={logoAsset.url}
+            width={28}
+            height={28}
+            loading="lazy"
+            alt=""
+            className="size-7"
+          />
+          <Wordmark className="font-medium" />
+        </p>
         <p className="flex items-start gap-2">
           <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
-          <Wordmark className="font-medium" />
+          Este é um apoio à sua saúde emocional e não substitui acompanhamento profissional. Em
+          momentos de crise, ligue para o CVV (188), 24h por dia.
         </p>
         <p>
           Este é um apoio à sua saúde emocional e não substitui acompanhamento profissional. Em
