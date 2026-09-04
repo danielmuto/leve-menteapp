@@ -4,6 +4,7 @@ import { ArrowRight, Bell, Check } from "lucide-react";
 import { HeaderWash, MoodIcon, ExerciseArt } from "@/components/Art";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { moods, freeExercises } from "@/lib/exercises";
+import logoAsset from "@/assets/logo-levemente.png.asset.json";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -67,9 +68,27 @@ function Welcome() {
       </div>
 
       <main className="relative mx-auto flex min-h-screen w-full max-w-xl flex-col justify-center px-6 py-14">
+        <div className="absolute left-1/2 top-8 flex -translate-x-1/2 items-center gap-2">
+          <img
+            src={logoAsset.url}
+            width={36}
+            height={36}
+            alt="Logotipo Levemente — pena em aquarela"
+            className="size-9"
+          />
+          <span className="bg-gradient-to-r from-primary to-success bg-clip-text font-display text-xl text-transparent">
+            Levemente
+          </span>
+        </div>
         {step === 0 && (
           <section className="fade-up space-y-7 text-center">
-            <ExerciseArt kind="letter" size={120} className="mx-auto" />
+            <img
+              src={logoAsset.url}
+              width={112}
+              height={112}
+              alt=""
+              className="mx-auto size-28 drop-shadow-lg"
+            />
             <div className="space-y-4">
               <h1 className="text-4xl leading-tight sm:text-5xl">
                 Escrever é um jeito gentil de se ouvir
