@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Bell, Check } from "lucide-react";
 import { HeaderWash, MoodIcon, ExerciseArt } from "@/components/Art";
 import { AvatarPicker } from "@/components/AvatarPicker";
-import { moods, freeExercises } from "@/lib/exercises";
+import { moods, freeExercises, moodLabel } from "@/lib/exercises";
 import logoVertical from "@/assets/logo-vertical.png.asset.json";
 import { useApp } from "@/lib/store";
 import { Button } from "@/components/ui/button";
