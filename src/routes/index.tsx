@@ -369,10 +369,6 @@ function Landing() {
           Este é um apoio à sua saúde emocional e não substitui acompanhamento profissional. Em
           momentos de crise, ligue para o CVV (188), 24h por dia.
         </p>
-        <p>
-          Este é um apoio à sua saúde emocional e não substitui acompanhamento profissional. Em
-          momentos de crise, ligue para o CVV (188), 24h por dia.
-        </p>
         <div className="flex flex-wrap items-center gap-4">
           <Link to="/privacidade" className="underline-offset-4 hover:underline">
             Política de privacidade
