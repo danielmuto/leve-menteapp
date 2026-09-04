@@ -14,6 +14,7 @@ export type Entry = {
   title: string;
   createdAt: string;
   values: Record<string, string>;
+  audios?: { id: string; url: string; seconds: number }[];
 };
 
 export type MoodLog = { date: string; mood: string };
