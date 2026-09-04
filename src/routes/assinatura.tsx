@@ -40,10 +40,8 @@ function Paywall() {
   const navigate = useNavigate();
 
   function subscribe() {
-    // Checkout do Stripe entra aqui assim que as chaves forem conectadas.
-    update({ subscriber: true });
-    toast.success("Assinatura ativada. Tudo liberado para você.");
-    navigate({ to: "/inicio" });
+    window.open(EDUZZ_CHECKOUT_URL, "_blank", "noopener,noreferrer");
+    toast("Abrimos o checkout seguro em uma nova aba. Ao concluir o pagamento, sua assinatura é ativada.");
   }
 
   if (state.subscriber) {
