@@ -82,7 +82,13 @@ function Welcome() {
         </div>
         {step === 0 && (
           <section className="fade-up space-y-7 text-center">
-            <ExerciseArt kind="letter" size={120} className="mx-auto" />
+            <img
+              src={logoAsset.url}
+              width={112}
+              height={112}
+              alt=""
+              className="mx-auto size-28 drop-shadow-lg"
+            />
             <div className="space-y-4">
               <h1 className="text-4xl leading-tight sm:text-5xl">
                 Escrever é um jeito gentil de se ouvir
